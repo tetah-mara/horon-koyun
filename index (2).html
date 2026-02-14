@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Horon Koyun Sayacı</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div class="brand">Horon Koyun Sayacı 🐑</div>
+      <div class="counter">Sayılan: <span id="count">0</span></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="stage">
+      <div class="hint">Başlat’a bas — koyunlar horonla geçsin 😄</div>
+      <div id="lane" class="lane"></div>
+    </section>
+
+    <section class="controls">
+      <button id="start" class="btn primary">Başlat</button>
+      <button id="stop" class="btn">Durdur</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
