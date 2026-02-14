@@ -1,7 +1,6 @@
-* { box-sizing: border-box; }
+*{ box-sizing:border-box; }
 :root{
   --bg:#0b1220;
-  --panel: rgba(255,255,255,.08);
   --stroke: rgba(255,255,255,.12);
   --text:#e5e7eb;
   --muted: rgba(229,231,235,.7);
@@ -14,7 +13,7 @@ body{
     radial-gradient(1100px 600px at 20% 10%, rgba(34,197,94,.18), transparent 60%),
     radial-gradient(900px 500px at 80% 20%, rgba(59,130,246,.18), transparent 60%),
     var(--bg);
-  color: var(--text);
+  color:var(--text);
   overflow-x:hidden;
 }
 
@@ -26,14 +25,9 @@ body{
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--stroke);
 }
-.top .wrap{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding: 14px 0;
-}
-.brand{ font-weight:800; letter-spacing:.2px; }
-.counter{ color: var(--muted); }
+.top .wrap{ display:flex; justify-content:space-between; align-items:center; padding:14px 0; }
+.brand{ font-weight:800; }
+.counter{ color:var(--muted); }
 
 .stage{
   margin-top: 22px;
@@ -53,137 +47,22 @@ body{
   color: var(--muted);
   font-size: 14px;
 }
-
 .stage::after{
   content:"";
   position:absolute; left:0; right:0; bottom: 54px;
   height: 2px;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
 }
+.lane{ position:absolute; left:0; right:0; bottom:34px; height:200px; }
 
-.lane{
-  position:absolute;
-  left:0; right:0; bottom: 34px;
-  height: 200px;
-}
-
-/* --- SHEEP --- */
-.sheep{
-  position:absolute;
-  left: -220px;
-  bottom: 0;
-  width: 170px;
-  height: 120px;
-  transform-origin: 42% 82%;
-  filter: drop-shadow(0 10px 14px rgba(0,0,0,.35));
-}
-
-/* soldan sağa ilerleme */
-.sheep.run{
-  animation-name: moveAcross;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-
-/* horon hissi: zıplama + gövde salınımı */
-.sheep .dance{
-  width:100%;
-  height:100%;
-  transform-origin: 45% 80%;
-  animation:
-    bounce .34s ease-in-out infinite,
-    sway .55s ease-in-out infinite;
-}
-
-/* gövde + yün */
-.body{
-  position:absolute;
-  left: 44px;
-  top: 34px;
-  width: 92px;
-  height: 58px;
-  background: #f8fafc;
-  border-radius: 999px;
-  border: 2px solid rgba(0,0,0,.18);
-}
-.puff{
-  position:absolute;
-  background:#f8fafc;
-  border:2px solid rgba(0,0,0,.14);
-  border-radius:999px;
-}
-.p1{ width:36px; height:32px; left: 46px; top: 28px; }
-.p2{ width:38px; height:34px; left: 74px; top: 20px; }
-.p3{ width:36px; height:32px; left: 104px; top: 28px; }
-
-/* kafa */
-.head{
-  position:absolute;
-  left: 18px;
-  top: 52px;
-  width: 38px;
-  height: 34px;
-  background: #111827;
-  border-radius: 16px;
-}
-.eye{
-  position:absolute;
-  width:7px; height:7px;
-  background:#fff;
-  border-radius:999px;
-  top: 12px; left: 22px;
-}
-.eye::after{
-  content:"";
-  position:absolute;
-  width:2.5px; height:2.5px;
-  background:#111827;
-  border-radius:999px;
-  left:2.2px; top:2.2px;
-}
-
-/* horon adımı: bacaklar sırayla */
-.leg{
-  position:absolute;
-  bottom: 20px;
-  width: 10px;
-  height: 28px;
-  background: #111827;
-  border-radius: 9px;
-  transform-origin: 50% 0%;
-}
-.l1{ left: 72px; }
-.l2{ left: 92px; }
-.l3{ left: 112px; }
-.l4{ left: 132px; }
-
-/* çapraz adım gibi: 1-3 bir faz, 2-4 ters faz */
-.sheep .l1, .sheep .l3{ animation: step .20s ease-in-out infinite; }
-.sheep .l2, .sheep .l4{ animation: step2 .20s ease-in-out infinite; }
-
-/* küçük “kol” gibi kulak/çene sallansın (horon vibe) */
-.ear{
-  position:absolute;
-  left: 10px; top: 56px;
-  width: 14px; height: 10px;
-  background:#111827;
-  border-radius: 10px;
-  transform-origin: 100% 50%;
-  animation: ear .34s ease-in-out infinite;
-}
-
-/* controls */
 .controls{
-  display:flex;
-  gap: 12px;
-  align-items:center;
-  margin: 14px 0 40px;
-  flex-wrap: wrap;
+  display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+  margin:14px 0 40px;
 }
 .btn{
-  padding: 10px 14px;
-  border-radius: 14px;
-  border: 1px solid var(--stroke);
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid var(--stroke);
   background: rgba(255,255,255,.06);
   color: var(--text);
   cursor:pointer;
@@ -193,34 +72,129 @@ body{
   border-color: rgba(34,197,94,.35);
 }
 
-/* keyframes */
+/* ---------------- HORON SHEEP ---------------- */
+
+.sheep{
+  position:absolute;
+  left:-260px;
+  bottom:0;
+  width: 190px;
+  height: 130px;
+  transform-origin: 40% 85%;
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,.35));
+}
+
+.sheep.run{
+  animation-name: moveAcross;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+/* Horon: hızlı zıplama + omuz sallama + minik yan kayma */
+.sheep .dance{
+  width:100%; height:100%;
+  transform-origin: 45% 85%;
+  animation:
+    horonBounce var(--b, .22s) cubic-bezier(.4,0,.2,1) infinite,
+    shoulder var(--s, .28s) ease-in-out infinite,
+    sideShift var(--x, .36s) ease-in-out infinite;
+}
+
+/* Gövde */
+.body{
+  position:absolute;
+  left: 56px; top: 42px;
+  width: 92px; height: 56px;
+  background:#f8fafc;
+  border-radius:999px;
+  border:2px solid rgba(0,0,0,.18);
+}
+.puff{ position:absolute; background:#f8fafc; border:2px solid rgba(0,0,0,.14); border-radius:999px; }
+.p1{ width:36px; height:32px; left: 58px; top: 36px; }
+.p2{ width:40px; height:36px; left: 86px; top: 28px; }
+.p3{ width:36px; height:32px; left: 116px; top: 36px; }
+
+/* Kafa */
+.head{
+  position:absolute;
+  left: 28px; top: 60px;
+  width: 38px; height: 34px;
+  background:#111827;
+  border-radius:16px;
+}
+.eye{
+  position:absolute; width:7px; height:7px; background:#fff; border-radius:999px;
+  top:12px; left:22px;
+}
+.eye::after{
+  content:""; position:absolute; width:2.5px; height:2.5px; background:#111827; border-radius:999px;
+  left:2.2px; top:2.2px;
+}
+
+/* Kollar (horon omuz hareketi) */
+.arm{
+  position:absolute;
+  width: 26px; height: 10px;
+  background:#111827;
+  border-radius: 10px;
+  top: 64px;
+  transform-origin: 10% 50%;
+  animation: arms var(--a, .28s) ease-in-out infinite;
+}
+.a1{ left: 60px; transform: rotate(-12deg); }
+.a2{ left: 126px; transform: rotate(12deg); transform-origin: 90% 50%; }
+
+/* Bacaklar (daha hızlı ve sert) */
+.leg{
+  position:absolute;
+  bottom: 22px;
+  width: 10px; height: 30px;
+  background:#111827;
+  border-radius:9px;
+  transform-origin: 50% 0%;
+}
+.l1{ left: 82px; }
+.l2{ left: 102px; }
+.l3{ left: 122px; }
+.l4{ left: 142px; }
+
+.sheep .l1, .sheep .l3{ animation: horonStep var(--p, .14s) ease-in-out infinite; }
+.sheep .l2, .sheep .l4{ animation: horonStep2 var(--p, .14s) ease-in-out infinite; }
+
 @keyframes moveAcross{
   from { transform: translateX(0); }
-  to   { transform: translateX(calc(100vw + 320px)); }
+  to   { transform: translateX(calc(100vw + 420px)); }
 }
 
-@keyframes bounce{
-  0%,100% { transform: translateY(0) rotate(-2.2deg); }
-  50%     { transform: translateY(-12px) rotate(2.2deg); }
+/* Horon bounce: küçük ama hızlı */
+@keyframes horonBounce{
+  0%,100% { transform: translateY(0) rotate(-1deg); }
+  50%     { transform: translateY(-16px) rotate(1deg); }
 }
-@keyframes sway{
+
+/* Omuz: gövdeyi sağa sola eğ */
+@keyframes shoulder{
+  0%,100% { transform: translateY(0) rotate(-1deg); }
+  50%     { transform: translateY(-2px) rotate(3deg); }
+}
+
+/* Yan kayma: horon gibi sağ-sol */
+@keyframes sideShift{
   0%,100% { margin-left: 0; }
-  50%     { margin-left: 8px; }
-}
-@keyframes step{
-  0%,100% { transform: rotate(16deg) translateY(0); }
-  50%     { transform: rotate(-18deg) translateY(2px); }
-}
-@keyframes step2{
-  0%,100% { transform: rotate(-14deg) translateY(1px); }
-  50%     { transform: rotate(20deg) translateY(0); }
-}
-@keyframes ear{
-  0%,100% { transform: rotate(10deg); }
-  50%     { transform: rotate(-18deg); }
+  50%     { margin-left: 10px; }
 }
 
-@media (max-width: 600px){
-  .stage{ height: 300px; }
+/* Kollar: aynı ritimde kalksın-insin */
+@keyframes arms{
+  0%,100% { transform: rotate(-18deg) translateY(0); }
+  50%     { transform: rotate(18deg) translateY(-2px); }
 }
 
+@keyframes horonStep{
+  0%,100% { transform: rotate(20deg) translateY(0); }
+  50%     { transform: rotate(-22deg) translateY(3px); }
+}
+@keyframes horonStep2{
+  0%,100% { transform: rotate(-18deg) translateY(2px); }
+  50%     { transform: rotate(26deg) translateY(0); }
+}
