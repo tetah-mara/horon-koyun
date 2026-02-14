@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header class="top">
     <div class="wrap">
       <div class="brand">Horon Koyun Sayacı 🐑</div>
@@ -23,9 +24,54 @@
     <section class="controls">
       <button id="start" class="btn primary">Başlat</button>
       <button id="stop" class="btn">Durdur</button>
+      <button id="musicBtn" class="btn">🎵 Müzik</button>
     </section>
   </main>
 
+  <!-- YouTube gizli player -->
+  <div style="position:absolute; width:0; height:0; overflow:hidden;">
+    <iframe 
+      id="ytplayer"
+      width="0"
+      height="0"
+      src="https://www.youtube.com/embed/hUdWILxC8sY?enablejsapi=1"
+      frameborder="0"
+      allow="autoplay">
+    </iframe>
+  </div>
+
   <script src="app.js"></script>
+
+  <!-- YouTube API -->
+  <script>
+    let player;
+    let musicPlaying = false;
+
+    // API script yükle
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytplayer');
+    }
+
+    const musicBtn = document.getElementById("musicBtn");
+
+    musicBtn.addEventListener("click", () => {
+      if (!player) return;
+
+      if (!musicPlaying) {
+        player.playVideo();
+        musicBtn.textContent = "⏸ Müzik Durdur";
+        musicPlaying = true;
+      } else {
+        player.pauseVideo();
+        musicBtn.textContent = "🎵 Müzik";
+        musicPlaying = false;
+      }
+    });
+  </script>
+
 </body>
 </html>
